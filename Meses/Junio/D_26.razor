@@ -1,0 +1,330 @@
+﻿@*
+/////////////////////////////////////
+Proyecto: Servicio social Curso kinder yoga
+Developer: Roberto Acuña
+Fecha Inicio:  Agosto 01 / 2023
+Fecha modificación: 19-09-23 -- 27/09/2023 -- 06/11/2023
+Bugs: Problemas con el metadato de audio, no carga al iniciar proyecto, necesita refrescar, contiene codigo missing para ello pero lo ignora  
+Pendiente: modificar texto button mantra al clickear, crear un array para encapsular los src de los demas audios para asignar el audio correspondiente    
+/////////////////////////////////////
+*@
+
+
+@page "/d_26"
+@inject IJSRuntime JS
+@using KinderYoga.Data.Helper;
+
+
+
+<PageTitle>26-Junio</PageTitle>
+
+
+@using KinderYoga.Data
+@inject WeatherForecastService ForecastService
+
+
+
+<div style="position: absolute;">
+    <img class="imgfd" src="/nota.png" />
+    
+</div>
+
+    
+<article class="contenido transparent  ">
+    
+    <br /> <br />
+    <section class="derecho">
+        
+        <h2 class="title"> 𝅘𝅥𝅘𝅥𝅯𝅘𝅥𝅱 𝄞𝄟  La Musica 𝅘𝅥𝅘𝅥𝅯𝅘𝅥𝅱 𝄞𝄟</h2>
+
+            <br /><br />
+        <iframe class="radius transparent" width="500" height="330" src="https://www.youtube.com/embed/hM6DYAf6kl0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        
+    </section>
+        <br /><br /><br /><br /><br />
+
+    <section class="izquierdo">
+        <h2 class="title"> 𝅘𝅥𝅘𝅥𝅯𝅘𝅥𝅱 𝄞𝄟  Elementos de la Música 𝅘𝅥𝅘𝅥𝅯𝅘𝅥𝅱 𝄞𝄟</h2>
+            <br /><br />
+        <p>
+            <iframe class="radius" width="500" height="330" src="https://www.youtube.com/embed/vN_VRL7_Arw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            
+        </p>
+    </section>
+        <br /><br /><br /><br /><br />
+    <section class="derecho">
+        <h2 class="title"> 𝅘𝅥𝅘𝅥𝅯𝅘𝅥𝅱 𝄞𝄟  Notas Musicales 𝅘𝅥𝅘𝅥𝅯𝅘𝅥𝅱 𝄞𝄟</h2>
+            <br /><br />
+
+        <iframe class="radius" width="500" height="330" src="https://www.youtube.com/embed/jhbFe6WuA9Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        
+    </section>
+        <br /><br /><br /><br /><br />
+   <section class="izquierdo">
+        <h2 class="title"> 𝅘𝅥𝅘𝅥𝅯𝅘𝅥𝅱 𝄞𝄟  Educación Rítmica 𝅘𝅥𝅘𝅥𝅯𝅘𝅥𝅱 𝄞𝄟</h2>
+            <br /><br />
+        
+            <p>
+            
+            <iframe class="radius" width="500" height="330" src="https://www.youtube.com/embed/PK7DH-DJJgE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </p>
+    </section>
+        <br /><br /><br /><br /><br />
+    <section class="derecho">
+        <h2 class="title"> 𝅘𝅥𝅘𝅥𝅯𝅘𝅥𝅱 𝄞𝄟  Acordes 𝅘𝅥𝅘𝅥𝅯𝅘𝅥𝅱 𝄞𝄟</h2>
+            <br /><br />
+
+        <iframe class="radius" width="500" height="330" src="https://www.youtube.com/embed/YDX4xULlkwc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        
+    </section>
+        <br /><br /><br /><br /><br />
+        <section class="izquierdo">
+        <h2 class="title"> Mantra 1 𝄞𝄟</h2>
+            <br /><br />
+            <p style="width:500px;">
+            Durante esta semana intenta aprender este mantra completo y cantado en la melodía que escuchas en alguno de los videos.  Puedes repetir <br />palabra por palabra y después frase por frase. Este mantra es una invocación para que este proceso que iniciamos juntos sea auspicioso y transformador.<br />
+            </p>
+        @*()=> expand = ! expand*@
+        <button id="mantra" class="btnmantra" ><p>Ver mantra</p> </button>
+        
+        @*@if (expand)
+            {*@
+                
+                <p>
+                <br />
+                Om sahana vavatu <br/>
+                Saha nau bhunaktu<br/>
+                Saha viiryam karavaavahai<br/>
+                Tejasvi Navaditamastu <br/>
+                Maa vidvissaavahai <br/>
+                Om shanti, shanti, shanti
+                <br/>
+                <br/>
+
+                Om sahana vavatu ॐ सह नाववतु <br/>
+                Om, que Dios proteja a maestros y alumnos <br/>
+                Saha nau bhunaktu सह नौ भुनक्तु Que nos nutra juntos <br/>
+                Saha viiryam karavaavahai सह वीर्यं करवावहै <br/>
+                Que podamos trabajar juntos con gran energía<br/>
+                Tejasvi Navaditamastu तेजस्वि नावधीतमस्तु <br/>
+                Que nuestros estudios sean esclarecedores. <br/>
+                Maa vidvissaavahai मा विद्विषावहै <br/>
+                Que todos nos llevemos bien<br/>
+                Om shanti, shanti, shanti ॐ शान्तिः शान्तिः शान्तिः <br/>
+                Om paz, paz, paz <br/>
+                </p>
+            @*}*@
+            
+            <br />
+            <br />
+            Que la divinidad nos proteja en este estudio. <br />
+            Que nos nutra con conocimiento. <br />
+            Que nos esforcemos para que se produzca el aprendizaje.<br />
+            Que mientras aprendemos seamos brillantes, claros y felices. <br />
+            Que no haya ningún malentendido. <br />
+        Que podamos usar estas nuevas capacidades para sanarnos y transformar al mundo<br /><br /><br />
+        
+        <iframe class="radius space" width="300" height="180" src="https://www.youtube.com/embed/K3N0A9nDn-I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe class="radius space" width="300" height="180" src="https://www.youtube.com/embed/AK2u0am0vV0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe class="radius space" width="300" height="180" src="https://www.youtube.com/embed/4Ka6gXebAe8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe class="radius space" width="300" height="180" src="https://www.youtube.com/embed/Ba9G4A-AVlY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe class="radius space" width="300" height="180" src="https://www.youtube.com/embed/MfyQ-LdWGpM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </section>
+        <br /><br /><br /><br />
+        <section class="derecho" >
+        <h2 class="title derecho" > Silencio</h2>
+            <br /><br />
+            <p class="obj">
+            El ejercicio 1 se trata de escuchar, de entrar en silencio sólamente 5 minutos en el momento del día que puedas hacerlo. poco a poco vamos a ir aumentando el tiempo, pero con tan sólo 5 minutos en silencio podemos comenzar a escuchar nuestros procesos mentales, emocionales y físicos. Si puedes hacer este ejercicio más veces al día, mejor!
+        </p>
+
+@*<div class="row">
+
+    <div class="col-4">
+
+        <input type="range" min="0" max="1" step="0.01" value="@_VolX" @oninput="@((args) => Vol( double.Parse( args.Value.ToString() )))" />
+
+    </div>
+
+
+        </div>*@
+
+<section style="float:right; margin-right:150px; ">
+            <div class="audio-player" style="background: linear-gradient( 70deg, #edaef9,#81b1fa );" id="skin">
+
+    <div class="holder">
+
+        <div class="audio-wrapper" id="player-container" href="javascript:;">
+            <audio id="player" class="uno" preload="metadata" onloadedmetadata="mDur()" ontimeupdate="initProgressBar()">
+                <source src="./audio/Silencio.mp3" type="audio/mp3">
+                
+            </audio>
+        </div>
+        <div class="player-controls scrubber">
+            <div>
+                <div>
+                    <p class="title"></p>
+                </div>
+                <div class="range">
+                    <input id="dur" type="range" class="range" name="rng" min="0" max="1" step="0.00000001" value="0" onchange="mSet()" style="width: 100%">
+                </div>
+                <br>
+                <div id="start-time" class="time start-time"></div>
+                <span id="end-time" class="time end-time"></span>
+                <br>
+                <div class="ctrl">
+                    <div class="image">
+
+                        @*<button id="play-btn" class="fa fa-play "></button>*@
+                        <button id="play-btn" class="play-btn" @onclick="@(()=> PlayPause()  )"> <i class="fa-solid @_btnPlayStyle"></i> </button>
+
+                        <a href="./Audio/Silencio.mp3" download class="ctrl_btn " title="Descargar" id="next"><i class="fa fa-download"></i></a>
+                    </div>
+                    <div class="volumeControl">
+                        <div class="wrapper">
+                            <input type="range" class="inner" min="0" max="1" step="0.01" value="@_VolX" @oninput="@((args) => Vol( double.Parse( args.Value.ToString() )))" />
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+  </section>
+
+        @*<audio controls="controls">
+                <br /><br />
+                
+            <source src="audio\silencio.mp3" type="audio/mpeg" />
+        </audio>*@
+
+    </section>
+        <br /><br /><br /><br />
+        <section class="izquierdo">
+        <h2 class="title">Ritmo </h2>
+            <br /><br />
+            <p style="width:500px;">El primer ejercicio semanal de ritmo es para que identifiques las figuras musicales, utilices tu metrónomo y aprendas las sílabas de la terapia rítmica.<br /> dále un tiempo, ten paciencia y poco a poco vas a poder hacer todos estos compases de corrido.</p> <br />
+        <a id="pdf" target="_blank" style="text-decoration:none;" href="\video\ritmo.pdf">Ritmo.pdf</a>
+        @*<embed src="video\ritmo.pdf" type="application/pdf" height="500px" width="700px"/>*@
+
+
+    </section>
+        <br /><br /><br /><br />
+        <section class="derecho">
+        <h2 class="title"> Voz Terapeutica</h2>
+            <br /><br />
+            <p class="obj">Esta semana vamos a entrar en la experiencia del OM, el sonido primordial y causal de este Universo. Encuentra un momento libre de interrupciones. Escucha la pista y por momentos canta con ella, inhala y exhala y permite que el sonido emane de tu boca mientras cierras tus ojos. Cuando sientas que ya vas a terminar tu ejercicio del día. Apaga el audio porque dura 20 minutos y quédate unos minutos más en silencio monitoreando tu experiencia para después anotarla en tu diario</p>
+
+        <audio controls="controls">
+            <source src="audio\om.mp3" type="audio/mpeg" />
+        </audio>
+    </section>
+        <br /><br /><br /><br />
+        <section >
+            <br /><br />
+
+            
+            
+    </section>
+    <div id="tema" class="radius">
+        <a target="_blank" style="text-decoration:none; text-align:center;" href="\video\Clase1_Semana1.pdf">Presentación Semana1.pdf</a>
+    </div>
+    <br />
+  
+</article>
+
+var text = document.getElementById("mantra");
+
+text.addEventListener('click', changetext);
+function changetext() {
+    text.innerHTML = "Ocultar mantra";
+    text.style.color = "red";
+
+
+
+@code {
+
+    private WeatherForecast[]? forecasts;
+    private bool expand;
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    }
+
+       // esta bandera es para saber si esta en reproducción
+    private bool _EnPlay = false;
+    private string _btnPlayStyle { get; set; } = "fa-play";
+
+    
+    private double _Vol { get; set; } = 1;
+    private double _VolX { get; set; } = 1;
+    private string _VolStyle { get; set; } = "width:100%";
+
+    private async Task PlayPause()
+    {
+
+        if (_EnPlay)
+        {
+            await JS.JSStop();
+            _btnPlayStyle = "fa-play";
+        }
+        else
+        {
+            await JS.JSPlay();
+            _btnPlayStyle = "fa-pause";
+        }
+
+        _EnPlay = !_EnPlay;
+        StateHasChanged();
+
+    }
+
+    private async Task Vol(double xVol)
+    {
+        _VolX = xVol;
+        await JS.JSVol50(_VolX);
+    }
+
+    /// <summary>
+    /// Ya no se usa fue prueba
+    /// </summary>
+    /// <param name="Tipo"></param>
+    /// <returns></returns>
+    private async Task Vo50(int Tipo)
+    {
+
+        
+        switch (Tipo)
+        {
+            case -1:
+                _Vol = 0;
+                _VolX = 0;
+                break;
+            case 0:
+                _Vol -= .1;
+                break;
+            case 1:
+                _Vol += .1;
+                break;
+        }
+
+        if (_Vol < 0)
+            _Vol = 1;
+
+        if (_Vol > 1)
+            _Vol = 1;
+
+        _VolStyle = $"width:{_Vol * 100}%";
+
+        await JS.JSVol50(_Vol);
+    }
+
+
+}
