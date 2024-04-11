@@ -8,65 +8,23 @@ function Alerta2(mensaje) {
     alert(mensaje);
 }
 
-//var text = document.getElementById("mantra");
-
-//text.addEventListener("click", changetext);
-//function changetext() {
-//    console.log("entra solicitud")
-//    text.innerHTML = "Ocultar mantra"
-//    text.style.color = "red";
-
-//}
-
-
-
-//switch (song) {
-//    case 0:
-//        var i = "./audio/Silencio.mp3";
-//        break;
-//    case 1:
-//        var i = "./audio/formula_premas_om_shanti.mp3";
-//        break;
-//    case 2:
-//        break;
-//    case 3:
-//        break;
-//    default:
-
-//}
-
-//player.onclick = function () {
-
-//    player.
-//    var song = new Array(
-
-
-//    )
-
-
-//    for (int i = 0; ;  )
-//    {
-
-//    }
-
-
-//}
-
-//var song = new Array(
-//    uno,dos,tres,cuatro,cinco,seis.siete,ocho,nueve
-//);
-
-//uno = document.getElementsByClassName('uno');
-//dos = document.getElementsByClassName('dos');
-
 //___________________________________________________________
-let player = document.getElementById('player');
-let dur = document.getElementById('dur');
-let duracion = document.getElementById('duracion');
 
 
-player.preload();
 
+document.addEventListener("DOMContentLoaded", function () {
+    // Tu código aquí
+    let player = document.getElementById('player');
+    let dur = document.getElementById('dur');
+    let duracion = document.getElementById('duracion');
+    
+
+    if (player  !== null) {
+        console.log("Esta cargado");
+    } else {
+        console.error("El elemento de audio no se encontró en el DOM.");
+    }
+});
 
 
 function iniPlay() {
@@ -95,23 +53,28 @@ function Vol50(xVol) {
 }
 
 function initProgressBar() {
+
+    
     //console.log("entra a ini progress");
 
-    let length = player.duration;
+    let tamaño = player.duration;
     let current_time = player.currentTime;
-    let totalLength = calculateTotalValue(length)
-
-    let st = document.getElementById('start-time');
-    let et = document.getElementById('end-time');
-
-
-    //jQuery(".end-time").html(totalLength);
+    let totalLength = calculateTotalValue(tamaño)
     let currentTime = calculateCurrentValue(current_time);
+
+    document.getElementById('start-time').innerHTML = currentTime ;
+    document.getElementById('end-time').innerHTML = totalLength;
+
+
+    
+    
+    //jQuery(".end-time").html(totalLength);
+    
     //jQuery(".start-time").html(currentTime);
 
-    st.innerHTML = currentTime;
-    et.innerHTML = totalLength;
-
+    /*st.innerHTML = currentTime;*/
+    /*et.innerHTML = totalLength;*/
+    
     //dur.value = player.currentTime;
     //duracion.value = player.currentTime;
 
@@ -125,9 +88,9 @@ function initProgressBar() {
 };
 
 
-function calculateTotalValue(length) {
-    let minutes = Math.floor(length / 60),
-        seconds_int = length - minutes * 60,
+function calculateTotalValue(tamaño) {
+    let minutes = Math.floor(tamaño / 60),
+        seconds_int = tamaño - minutes * 60,
         seconds_str = seconds_int.toString(),
         seconds = seconds_str.substr(0, 2),
         time = minutes + ':' + seconds
@@ -156,13 +119,32 @@ function mSet() {
 
 
 function mDur() {
-    let length = player.duration;
-    dur.max = length;
+    let tamaño = player.duration;
+    dur.max = tamaño;
 
     var powerRanger = document.getElementById("dur");
-    powerRanger.max = length;
+    powerRanger.max = tamaño;
 
-    console.log("Max:"+ length);
+    console.log("Max:" + tamaño);
 
     //duracion.max = length;
 }
+
+window.show_hidden = function () {
+    var paragraph = document.getElementById("info");
+
+    
+    if (paragraph.style.display === "none") {
+        document.getElementById("btnmantra").innerText = "Ocultar Mantra";
+        paragraph.style.display = "block";
+        
+        
+    }
+    else {
+        document.getElementById("btnmantra").innerText = "Ver Mantra";
+        
+        paragraph.style.display = "none";
+        
+        
+    }
+};

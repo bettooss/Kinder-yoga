@@ -5,13 +5,12 @@ html, body {
     background-color: #FFFFFF80;
 }
 
+
 .img {
-    
-    
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: auto;
-    height:500px;
+    height: 500px;
 }
 h1:focus {
     outline: none;
@@ -120,7 +119,9 @@ a, .btn-link {
 
 .contenido {
     display: flex;
-    flex-direction: column;
+    
+    
+    width:100%;
     z-index:6;
 }
 .transparent {
@@ -131,11 +132,9 @@ a, .btn-link {
 }
 
 .centro {
-    display:flex;
-    flex-direction:column;
-    
+
+   
     text-align:center;
-    margin-left:317px;
     width: 65%;
     padding: 15px;
 
@@ -186,6 +185,7 @@ a, .btn-link {
 
 .mnu {
     margin: 20px;
+    
 }
 .navbar-brad {
     margin-left: -250px;
@@ -199,13 +199,20 @@ a, .btn-link {
         color: #F0FFFF;
     }
 
-.clmnu {
-    background-color: rgba(255,255,255,0.2);
-    border-radius:7px;
-    margin: 2px 0px 2px 0px ;
-    backdrop-filter: blur(2px);
-    position:relative;
+.muestramnu:hover .clmnu {
+    display:block;
     
+        
+}
+
+
+.clmnu {
+    display: none;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 7px;
+    margin: 2px 0px 2px 0px;
+    backdrop-filter: blur(2px);
+    position: relative;
 }
 
     .clmnu:hover {
@@ -215,6 +222,7 @@ a, .btn-link {
         width: 115px;
         background-color: #AFEEEE;
         border-radius: 7px;
+        
     }
 
 
@@ -236,11 +244,21 @@ a, .btn-link {
     }
 
 }*/
+@keyframes textooutin {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100px);
+    }
+}
+
 
 .menubar {
     height: 80px;
     display: flex;
     justify-content: space-around ;
+    
 }
 
 .item {
@@ -257,10 +275,16 @@ a, .btn-link {
     
 }
 
-.sombra:hover   {
+.sombra:hover{
+    
     background-color: rgba(255,255,255,0.1);
-    border-radius: 5px;   
+    border-radius: 5px;
 }
+
+.sombra:hover.clmnu {
+    display:block;
+}
+
 .index {
     z-index:4;
     position: relative;
@@ -280,6 +304,7 @@ a, .btn-link {
 }
 .mnuindex {
     z-index: 11;
+    
 }
 .imgfd {
     
@@ -358,6 +383,24 @@ a, .btn-link {
     
 }
 .btnmantra {
+    border-radius: 8px;
+    background: linear-gradient( 70deg, #edaef9,#81b1fa );
+    font-family: 'Comic Sans MS';
+    border: none;
+    height: 30px;
+    
+    
+}
+btnmantra1 {
+    border-radius: 8px;
+    background: linear-gradient( 70deg, #edaef9,#81b1fa );
+    
+    font-family: 'Comic Sans MS';
+    border: none;
+    height: 30px;
+}
+btnmantra2
+{
     border-radius: 8px;
     background: linear-gradient( 70deg, #edaef9,#81b1fa );
     font-family: 'Comic Sans MS';
@@ -479,6 +522,7 @@ a, .btn-link {
     animation-direction: alternate;
     color: red;
 }*/
+
 
 /*@-moz-keyframes blink {
     from {
@@ -1502,6 +1546,15 @@ a, .btn-link {
     }
 
 /*#endregion */
+
+/*---------------- Seccion video --------------------------*/
+
+.centralvideo {
+    margin-left:300px;   
+    width: 700px;
+    
+
+}
 
 
 

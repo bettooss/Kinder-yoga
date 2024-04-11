@@ -32,7 +32,5 @@ namespace KinderYoga.Data.Helper
 		}
 
 
-
-
-	}
+    }
 }

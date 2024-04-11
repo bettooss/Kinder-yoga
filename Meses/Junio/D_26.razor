@@ -3,9 +3,9 @@
 Proyecto: Servicio social Curso kinder yoga
 Developer: Roberto Acuña
 Fecha Inicio:  Agosto 01 / 2023
-Fecha modificación: 19-09-23 -- 27/09/2023 -- 06/11/2023
-Bugs: Problemas con el metadato de audio, no carga al iniciar proyecto, necesita refrescar, contiene codigo missing para ello pero lo ignora  
-Pendiente: modificar texto button mantra al clickear, crear un array para encapsular los src de los demas audios para asignar el audio correspondiente    
+Fecha modificación: 19-09-23 -- 27/09/2023 -- 06/11/2023 -- 29/03/2024 03/04/2024
+Bugs: resolvemos el problemas con el metadato de audio con DOMContentLoaded
+Pendiente:  crear un array para encapsular los src de los demas audios para asignar el audio correspondiente    
 /////////////////////////////////////
 *@
 
@@ -13,14 +13,14 @@ Pendiente: modificar texto button mantra al clickear, crear un array para encaps
 @page "/d_26"
 @inject IJSRuntime JS
 @using KinderYoga.Data.Helper;
-
+@using KinderYoga.Data
 
 
 <PageTitle>26-Junio</PageTitle>
 
 
-@using KinderYoga.Data
-@inject WeatherForecastService ForecastService
+
+
 
 
 
@@ -84,12 +84,12 @@ Pendiente: modificar texto button mantra al clickear, crear un array para encaps
             <p style="width:500px;">
             Durante esta semana intenta aprender este mantra completo y cantado en la melodía que escuchas en alguno de los videos.  Puedes repetir <br />palabra por palabra y después frase por frase. Este mantra es una invocación para que este proceso que iniciamos juntos sea auspicioso y transformador.<br />
             </p>
-        @*()=> expand = ! expand*@
-        <button id="mantra" class="btnmantra" ><p>Ver mantra</p> </button>
         
-        @*@if (expand)
-            {*@
-                
+
+        <button id="btnmantra" @onclick="Parrafo" class=" btnmantra"><p>Ver mantra</p> </button>
+        
+        
+            <div id="info" style="display:none;">            
                 <p>
                 <br />
                 Om sahana vavatu <br/>
@@ -113,9 +113,9 @@ Pendiente: modificar texto button mantra al clickear, crear un array para encaps
                 Om shanti, shanti, shanti ॐ शान्तिः शान्तिः शान्तिः <br/>
                 Om paz, paz, paz <br/>
                 </p>
-            @*}*@
+           
             
-            <br />
+            
             <br />
             Que la divinidad nos proteja en este estudio. <br />
             Que nos nutra con conocimiento. <br />
@@ -123,6 +123,10 @@ Pendiente: modificar texto button mantra al clickear, crear un array para encaps
             Que mientras aprendemos seamos brillantes, claros y felices. <br />
             Que no haya ningún malentendido. <br />
         Que podamos usar estas nuevas capacidades para sanarnos y transformar al mundo<br /><br /><br />
+        
+        </div>
+        
+        <br /><br /><br />
         
         <iframe class="radius space" width="300" height="180" src="https://www.youtube.com/embed/K3N0A9nDn-I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         <iframe class="radius space" width="300" height="180" src="https://www.youtube.com/embed/AK2u0am0vV0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -170,7 +174,9 @@ Pendiente: modificar texto button mantra al clickear, crear un array para encaps
                 </div>
                 <br>
                 <div id="start-time" class="time start-time"></div>
-                <span id="end-time" class="time end-time"></span>
+                <div id="end-time" class="time end-time"></div>
+                
+
                 <br>
                 <div class="ctrl">
                     <div class="image">
@@ -206,13 +212,15 @@ Pendiente: modificar texto button mantra al clickear, crear un array para encaps
         </audio>*@
 
     </section>
+
+        
         <br /><br /><br /><br />
         <section class="izquierdo">
         <h2 class="title">Ritmo </h2>
             <br /><br />
             <p style="width:500px;">El primer ejercicio semanal de ritmo es para que identifiques las figuras musicales, utilices tu metrónomo y aprendas las sílabas de la terapia rítmica.<br /> dále un tiempo, ten paciencia y poco a poco vas a poder hacer todos estos compases de corrido.</p> <br />
         <a id="pdf" target="_blank" style="text-decoration:none;" href="\video\ritmo.pdf">Ritmo.pdf</a>
-        @*<embed src="video\ritmo.pdf" type="application/pdf" height="500px" width="700px"/>*@
+        
 
 
     </section>
@@ -222,9 +230,7 @@ Pendiente: modificar texto button mantra al clickear, crear un array para encaps
             <br /><br />
             <p class="obj">Esta semana vamos a entrar en la experiencia del OM, el sonido primordial y causal de este Universo. Encuentra un momento libre de interrupciones. Escucha la pista y por momentos canta con ella, inhala y exhala y permite que el sonido emane de tu boca mientras cierras tus ojos. Cuando sientas que ya vas a terminar tu ejercicio del día. Apaga el audio porque dura 20 minutos y quédate unos minutos más en silencio monitoreando tu experiencia para después anotarla en tu diario</p>
 
-        <audio controls="controls">
-            <source src="audio\om.mp3" type="audio/mpeg" />
-        </audio>
+        
     </section>
         <br /><br /><br /><br />
         <section >
@@ -238,14 +244,11 @@ Pendiente: modificar texto button mantra al clickear, crear un array para encaps
     </div>
     <br />
   
+    
+
 </article>
 
-var text = document.getElementById("mantra");
 
-text.addEventListener('click', changetext);
-function changetext() {
-    text.innerHTML = "Ocultar mantra";
-    text.style.color = "red";
 
 
 
@@ -253,19 +256,19 @@ function changetext() {
 
     private WeatherForecast[]? forecasts;
     private bool expand;
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
-    }
 
-       // esta bandera es para saber si esta en reproducción
+
+
+
+    // esta bandera es para saber si esta en reproducción
     private bool _EnPlay = false;
     private string _btnPlayStyle { get; set; } = "fa-play";
 
-    
+
     private double _Vol { get; set; } = 1;
     private double _VolX { get; set; } = 1;
     private string _VolStyle { get; set; } = "width:100%";
+
 
     private async Task PlayPause()
     {
@@ -300,7 +303,7 @@ function changetext() {
     private async Task Vo50(int Tipo)
     {
 
-        
+
         switch (Tipo)
         {
             case -1:
@@ -326,5 +329,13 @@ function changetext() {
         await JS.JSVol50(_Vol);
     }
 
+
+    private async Task Parrafo()
+
+    {
+        await JS.InvokeVoidAsync("show_hidden");
+    }
+
+   
 
 }
