@@ -114,11 +114,12 @@ a, .btn-link {
     box-shadow: 10px 10px 20px 3px #8595AC;
 }
 .space {
-    margin: 9px 15px ;
+    margin: 0px 30px 30px 0px;
 }
 
 .contenido {
     display: flex;
+    flex-direction:column;
     
     
     width:100%;
@@ -132,7 +133,7 @@ a, .btn-link {
 }
 
 .centro {
-
+    margin-left:270px;
    
     text-align:center;
     width: 65%;
@@ -162,19 +163,36 @@ a, .btn-link {
     background: linear-gradient( 70deg, #edaef9,#81b1fa );
     border-radius: 50px;
 }
+#word {
+    height: 70px;
+    width: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient( 70deg, #edaef9,#81b1fa );
+    border-radius: 50px;
+}
 
 
 #tema {
     height: 70px;
-    width: 140px;
+    width: 160px;
     background: linear-gradient( 70deg, #edaef9,#81b1fa );
     display: flex;
     align-items: center;
     margin-left: 700px;
+    
 }
 .title {
     font-size: 55px;
     font-variant: small-caps;
+    
+}
+
+.foto {
+    height: 400px;
+    width: 450px;
+    
 }
 
 /*-------------- Seccion Menu-------------------------------------*/
@@ -1552,7 +1570,10 @@ btnmantra2
 .centralvideo {
     margin-left:300px;   
     width: 700px;
-    
+
+}
+.sizevideo {
+    height: 450px;
 
 }
 
