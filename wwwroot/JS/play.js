@@ -148,3 +148,43 @@ window.show_hidden = function () {
         
     }
 };
+
+window.show_hidden1 = function () {
+    var paragraph = document.getElementById("infor");
+
+
+    if (paragraph.style.display === "none") {
+        document.getElementById("btnsong").innerText = "Ocultar Cancion";
+        paragraph.style.display = "block";
+
+
+    }
+    else {
+        document.getElementById("btnsong").innerText = "Ver Cancion";
+
+        paragraph.style.display = "none";
+
+
+    }
+};
+
+
+//window.obtensrc = function (image) {
+
+//    return image.src;
+//}
+
+//window.visorc = function () {
+//    var visor = document.getElementById("visorr");    
+//    visor.style.display = "none";
+    
+//};
+
+//window.openimg = function (src) {
+//    var visor = document.getElementById("images").src = src;    
+//    visor.style.display = "flex";
+
+
+//};
+
+

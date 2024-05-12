@@ -1,4 +1,102 @@
-﻿
+﻿@*
+/////////////////////////////////////
+Proyecto: Servicio social Curso kinder yoga
+Developer: Roberto Acuña
+Fecha Inicio:  Abril / 20 / 2024
+Fecha modificación:
+Bugs:
+Pendiente: 
+/////////////////////////////////////
+*@
+
+
+@page "/D_10"
+
+@inject IJSRuntime JS
+
+
+
+<PageTitle> 3-Agosto </PageTitle>
+
+<div style="position: absolute;">
+    <img class="imgfd" src="/nota.png" />
+    
+</div>
+
+    
+<article class="contenido transparent  ">
+
+    <section>
+
+        <div class ="visor" id="visorr">
+
+            <img id="images" src=""/>
+            <span @onclick="closev" >X</span>
+        </div>
+
+        <br /><br />
+        <img class="radius space max" style="height:300px; width:320px; " data-src="/video/agosto/metodologias_d10.png" src="/video/agosto/metodologias_d10.png" @onclick="Openimg" />
+        <img class="radius space max" style="height:300px; width:320px; " data-src="/video/agosto/metodologias_d10.png" src="/video/agosto/cuadros_sesion_d10.png" @onclick="Openimg" />
+        <img class="radius space max" style="height:300px; width:320px; " data-src="/video/agosto/metodologias_d10.png" src="/video/agosto/cuadro_didacticas_d10.png" @onclick="Openimg " />
+        <img class="radius space max" style="height:300px; width:320px; " data-src="/video/agosto/metodologias_d10.png" src="/video/agosto/ficha_cliente_d10.png" @onclick="Openimg " />
+        <img class="radius space max" style="height:300px; width:320px; " data-src="/video/agosto/metodologias_d10.png" src="/video/agosto/ficha_cliente1_d10.png" @onclick="Openimg" />
+        <img class="radius space max" style="height:300px; width:320px; " data-src="/video/agosto/metodologias_d10.png" src="/video/agosto/puntos_d10.png" @onclick="Openimg " />
+        <img class="radius space max" style="height:300px; width:320px; " data-src="/video/agosto/metodologias_d10.png" src="/video/agosto/puntos1_d10.png" @onclick="Openimg " />
+
+        
+        <br /><br />
+
+    </section>
+    <br /><br /><br />
+    <section style=" display:inline-flex; " >
+
+        <div id="docto" class="radius" style="text-align:center; padding-top:11px; ">
+            
+            <a target="_blank" style="text-decoration:none;" href="/video/agosto/mth_infantil_animalitos_vanina_d10.pdf">MTH Infantil Animalitos.pdf</a>
+
+        </div>
+
+        <div id="docto" class="radius" style="text-align:center; padding-top:20px;  ">
+            
+            <a target="_blank" style="text-decoration:none; " href="/video/agosto/cuencos_tibetanos_d10.pdf">Cuencos Tibetanos.pdf</a>
+        </div>
+
+        <div id="docto" class="radius" style="text-align:center; padding-top:20px;  ">
+            
+            <a target="_blank" style="text-decoration:none; " href="/video/agosto/voz_terapeutica_d10.pdf">Voz Terapeutica.pdf</a>
+
+        </div>
+
+        <div id="docto" class="radius" style="text-align:center; padding-top:11px;  ">
+            
+            <a target="_blank" style="text-decoration:none; " href="/video/agosto/sesion_mth_luisa_chavez_d10.pdf">MTH Infantil Luisa Ch.pdf</a>
+        </div>
+
+
+    </section>
+    <br /><br /><br />
+    <section>
+        <video class="radius space sizevideo" style="margin-left:450px; width:690px;" controls="controls">
+            <source src="/video/agosto/clase_14_semana_d10.mp4" type="video/mp4" />
+        </video>
+    </section>
+
+</article>
+
+<Footer />
 @code {
 
+    private async Task closev()
+    {
+        await JS.InvokeVoidAsync("visorc");
+
+    }
+
+    async Task Openimg(MouseEventArgs e)
+    {
+        //var imagesrc = e.Target.GetAttribute("data-src");
+
+        //await JS.InvokeVoidAsync("openimg", imagesrc);
+    }
+    
 }

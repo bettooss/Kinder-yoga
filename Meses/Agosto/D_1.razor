@@ -2,186 +2,111 @@
 /////////////////////////////////////
 Proyecto: Servicio social Curso kinder yoga
 Developer: Roberto Acuña
-Fecha Inicio:  Agosto 01 / 2023
-Fecha modificación: 19-09-23
-Bugs: Problemas con el metadato de audio, no carga al iniciar proyecto, necesita refrescar, contiene codigo missing para ello pero lo ignora
-Pendiente: modificar controles y que apliquen en todos los navegadores
+Fecha Inicio:  Abril / 19 / 2024
+Fecha modificación: 
+Bugs: 
+Pendiente:  
 /////////////////////////////////////
 *@
 
 
-@page "/D01"
-@using KinderYoga.Data.Helper;
-
+@page "/D_1"
 @inject IJSRuntime JS
 
 
+<PageTitle> 1-Agosto </PageTitle>
 
-<h3>D01</h3>
-
-
-@*<button @onclick="@(()=> AlertaTest1()  )">  test js lamda </button>
-<button @onclick="AlertaTest1">  test js normal  </button>
-
-<button @onclick="@(()=> AlertaTest2()  )">  test js lamda </button>
-<button @onclick="@(()=> AlertaTest3("Hola est es del boton")  )">  test js lamda </button>
-*@
-
-
-<div class="row">
-   @*   ------------------Controles separados volume
-       
-   
-   <div class="col-4">
-        <button @onclick="@(()=> PlayPause()  )"> <i class="fa-solid @_btnPlayStyle"></i> </button>
-
-        <button @onclick="@(()=> Vo50(-1)  )"> <i class="fa-solid fa-volume-xmark"></i> </button>
-        <button @onclick="@(()=> Vo50(0)  )"> <i class=" fa-solid fa-volume-low"></i> </button>
-        <button @onclick="@(()=> Vo50(1)  )"> <i class="fa-solid fa-volume-high"></i> </button>
-    </div>*@
-    <div class="col-4">
-        @*<i class="fa-solid fa-volume-high"></i>*@
-
-        @*<input type="range" min="1" max="100" value="50" @bind="@_VolX"  > </input>*@
-
-        <input type="range" min="0" max="1" step="0.01" value="@_VolX" @oninput="@((args) => Vol( double.Parse( args.Value.ToString() )))" />
-
-        
-
-        @*<text>@_VolX</text> x x   *@
-    </div>
-
-
+<div style="position: absolute;">
+    <img class="imgfd" src="/nota.png" />
+    
 </div>
-
-
-<div class="audio-player" id="skin">
-
-    <div class="holder">
-
-        <div class="audio-wrapper" id="player-container" href="javascript:;">
-            <audio id="player" preload="metadata" onloadedmetadata="mDur()" ontimeupdate="initProgressBar()">
-                <source src="./audio/Silencio.mp3" type="audio/mp3">
-                
-            </audio>
-        </div>
-        <div class="player-controls scrubber">
-            <div>
-                <div>
-                    <p class="title"></p>
-                </div>
-                <div class="range">
-                    <input id="dur" type="range" class="range" name="rng" min="0" max="1" step="0.00000001" value="0" onchange="mSet()" style="width: 100%">
-                </div>
-                <br>
-                <div id="start-time" class="time start-time"></div>
-                <span id="end-time" class="time end-time"></span>
-                <br>
-                <div class="ctrl">
-                    <div>
-
-                        @*<button id="play-btn" class="fa fa-play "></button>*@
-                        <button id="play-btn" class="play-btn" @onclick="@(()=> PlayPause()  )"> <i class="fa-solid @_btnPlayStyle"></i> </button>
-
-
-                        <a href="./Audio/Silencio.mp3" download class="ctrl_btn " title="Descargar" id="next"><i class="fa fa-download"></i></a>
-
-
-
-                    </div>
-                    <div class="volumeControl">
-                        <div class="wrapper">
-                            <input type="range" class="inner" min="0" max="1" step="0.01" value="@_VolX" @oninput="@((args) => Vol( double.Parse( args.Value.ToString() )))" />
-
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
-
-
-
-
-
-@code {
-
-    // esta bandera es para saber si esta en reproducción
-    private bool _EnPlay = false;
-    private string _btnPlayStyle { get; set; } = "fa-play";
-
-    private double _Vol { get; set; } = 1;
-    private double _VolX { get; set; } = 1;
-    private string _VolStyle { get; set; } = "width:100%";
-
-    private async Task PlayPause()
-    {
-
-        if (_EnPlay)
-        {
-            await JS.JSStop();
-            _btnPlayStyle = "fa-play";
-        }
-        else
-        {
-            await JS.JSPlay();
-            _btnPlayStyle = "fa-pause";
-        }
-
-        _EnPlay = !_EnPlay;
-        StateHasChanged();
-
-    }
-
-    private async Task Vol(double xVol)
-    {
-        _VolX = xVol;
-        await JS.JSVol50(_VolX);
-    }
-
-    /// <summary>
-    /// Ya no se usa fue prueba
-    /// </summary>
-    /// <param name="Tipo"></param>
-    /// <returns></returns>
-    private async Task Vo50(int Tipo)
-    {
-
-        
-        switch (Tipo)
-        {
-            case -1:
-                _Vol = 0;
-                _VolX = 0;
-                break;
-            case 0:
-                _Vol -= .1;
-                break;
-            case 1:
-                _Vol += .1;
-                break;
-        }
-
-        if (_Vol < 0)
-            _Vol = 1;
-
-        if (_Vol > 1)
-            _Vol = 1;
-
-        _VolStyle = $"width:{_Vol * 100}%";
-
-        await JS.JSVol50(_Vol);
-    }
 
     
+<article class="contenido transparent  ">
 
+    <section class="izquierdo">
+        <br />
+        <h2 class="title"> 𝅘𝅥𝅘𝅥𝅯𝅘𝅥𝅱 𝄞𝄟  Medicina de la Semana 𝅘𝅥𝅘𝅥𝅯𝅘𝅥𝅱 𝄞𝄟</h2>
+
+        <iframe class="radius " width="500" height="330" src="https://www.youtube.com/embed/eBmZQiwlDME" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+        <br /><br /><br />
+        <button id="btnsong" @onclick="Song" class=" btnmantra" style="margin-left :45%;"><p>Ver mantra</p> </button>
+
+        
+        <div id="infor" style="display:none; text-align: center;">
+            <br /><br /> 
+            <p>
+                Soy de un pueblo que viene de lejos <br />
+                Mas allá del principio del tiempo<br />
+                Y venimos cantando los versos<br />
+                Que cantaba mi abuelo<br />
+                Cantando a la tierra primero<br />
+                Luego canto a mi Padre en el cielo <br />
+                Luego canto a mis cuatro abuelos<br />
+                Luego canto a mis sueños<br />
+                Para que no se apague este grito<br />
+                Que derrama mi sangre en la tierra<br />
+                Como el agua transforma la piedra<br />
+                Me transforma el amarte<br />
+                Cuando el fuego calienta la roca<br />
+                Viene el agua y descubre que es aire<br />
+                Yo descubro que soy la mirada<br />
+                La memoria de un pueblo<br />
+                Porque soy un viejo caminante<br />
+                Caminando un camino de estrellas<br />
+                En la tierra soy un pequeñito<br />
+                En el cielo un cometa<br />
+                Porque soy un viejo caminante<br />
+                Caminando un camino de estrellas<br />
+                En la tierra soy un pequeñito<br />
+                En el cielo un cometa<br />
+
+            </p>        
+        </div>
+
+
+        <br /><br />
+
+    </section>
+    <br /><br /><br />
+    <section class="derecho">
+        <br />
+        <h2 class="title"> 𝅘𝅥𝅘𝅥𝅯𝅘𝅥𝅱 𝄞𝄟  ND y Discapacidad 𝅘𝅥𝅘𝅥𝅯𝅘𝅥𝅱 𝄞𝄟</h2>
+
+        <br /><br />
+
+        <iframe class="radius space" width="300" height="180" src="https://www.youtube.com/embed/00-p8nKo95s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe class="radius space" width="300" height="180" src="https://www.youtube.com/embed/vBsSUa7rhA4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe class="radius space" width="300" height="180" src="https://www.youtube.com/embed/4AKBe2_4f3Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe class="radius space" width="300" height="180" src="https://www.youtube.com/embed/LzD52IoqeYc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe class="radius space" width="300" height="180" src="https://www.youtube.com/embed/um6ywk3HRZU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        
+
+    </section>
+    <br /><br /><br />
+    <section>
+        <br />
+
+        <video class="radius space sizevideo" style="margin-left:450px; width:690px;" controls="controls">
+            <source src="/video/agosto/clase_11_semana6_d1.mp4" type="video/mp4" />
+        </video>
+    </section>
+
+
+
+
+
+</article>
+
+<Footer />
+@code {
+
+    private async Task Song()
+
+    {
+        await JS.InvokeVoidAsync("show_hidden1");
+    }
 
 
 
