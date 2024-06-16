@@ -10,6 +10,8 @@ Pendiente: No
 *@
 
 @page "/D_13"
+@inject IJSRuntime JS
+@using KinderYoga.Data.Helper;
 
 <PageTitle>13-Julio</PageTitle>
 
@@ -116,18 +118,32 @@ Pendiente: No
 
     </section>    
     <br /><br /><br /><br />
-    <section >
-        <br /><br />
-        <img class="radius space foto " src="/video/julio/trabajo_escrito_d13 .png" />
-        <img class="radius space foto " src="/video/julio/trabajo_escrito_d13.png" />
-        <img class="radius space foto " src="/video/julio/clasificacion_d13.png" />
+    
+    <section style="display:flex;">
 
-        <br />
-    </section>    
+
+        <div id="imgx" style="display:none;">
+            <img id="img_size" style=" height:500px; width:600px;" src="@img_Max" />
+            <button style=" position:absolute; border:0;  transform: translate(-90%, -1%); border-radius:15%; background-color: rgba(255,255,255,0.2);  " @onclick="OcultarImg"><img style="height:30px; width:30px;  " src="/audio/close.png" /></button>
+        </div>
+        <div class="" style="display: block; width:100%;" >
+
+            <br /><br />
+            
+            <img class="radius space visorimg imgopn" src="@Constante._img[7]" @onclick="() => MostarImgMax(Constante._img[7])" />
+            <img class="radius space visorimg imgopn" src="@Constante._img[8]" @onclick="() => MostarImgMax(Constante._img[8])" />
+            <img class="radius space visorimg imgopn" src="@Constante._img[9]" @onclick="() => MostarImgMax(Constante._img[9])" />
+
+            @*<span @onclick="closev" >X</span>*@
+
+        </div>
+        <br /><br />
+
+    </section>
     <br /><br /><br /><br />
     <section >
 
-        <video class="radius space sizevideo" style="margin-left:430px;" controls="controls">
+        <video class="radius space sizevideo" style="margin-left:385px;" controls="controls">
             <source src="/video/julio/clase_6_semana_d_13.mp4" type="video/mp4" />
         </video>
         
@@ -137,5 +153,23 @@ Pendiente: No
 
 <Footer />
 @code {
+    private string img_Max = null;
 
+
+    private async Task MostarImgMax(string url)
+
+    {
+
+        img_Max = url;
+
+        await JS.InvokeVoidAsync("ImgMax");
+
+    }
+
+    private async Task OcultarImg()
+
+    {
+        await JS.InvokeVoidAsync("Imgcls");
+
+    }
 }

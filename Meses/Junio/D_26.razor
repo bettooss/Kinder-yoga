@@ -17,6 +17,7 @@ Pendiente:  crear un array para encapsular los src de los demas audios para asig
 
 
 
+
 <PageTitle>26-Junio</PageTitle>
 
 <div style="position: absolute;">
@@ -148,65 +149,60 @@ Pendiente:  crear un array para encapsular los src de los demas audios para asig
 
         </div>*@
 
-<section style="float:right; margin-right:150px; ">
-            <div class="audio-player" style="background: linear-gradient( 70deg, #edaef9,#81b1fa );" id="skin">
+    <section style="float:right; margin-right:150px; ">
+          <div class="audio-player" style="background: linear-gradient( 70deg, #edaef9,#81b1fa );" id="skin">
 
-    <div class="holder">
+        <div class="holder">
 
-        <div class="audio-wrapper" id="player-container" href="javascript:;">
-            <audio id="player" class="uno" preload="metadata" onloadedmetadata="mDur()" ontimeupdate="initProgressBar()">
-                <source src="./audio/Silencio.mp3" type="audio/mp3">
+                    <p id="titlesong" style="text-align: center; color:#56125B; display: none;">Silencio</p>
+
+            <div class="audio-wrapper" id="player-container" href="javascript:;">
+                            <audio id="player" preload="metadata" onloadedmetadata="mDur()" ontimeupdate="initProgressBar()">
+                <source src="@Constante._src[0]" type="audio/mp3">
                 
-            </audio>
-        </div>
-        <div class="player-controls scrubber">
-            <div>
+                </audio>
+            </div>
+            <div class="player-controls scrubber">
                 <div>
-                    <p class="title"></p>
-                </div>
-                <div class="range">
-                    <input id="dur" type="range" class="range" name="rng" min="0" max="1" step="0.00000001" value="0" onchange="mSet()" style="width: 100%">
-                </div>
-                <br>
-                <div id="start-time" class="time start-time"></div>
-                <div id="end-time" class="time end-time"></div>
-                
-
-                <br>
-                <div class="ctrl">
-                    <div class="image">
-
-                        @*<button id="play-btn" class="fa fa-play "></button>*@
-                        <button id="play-btn" class="play-btn" @onclick="@(()=> PlayPause()  )"> <i class="fa-solid @_btnPlayStyle"></i> </button>
-
-                        <a href="./Audio/Silencio.mp3" download class="ctrl_btn " title="Descargar" id="next"><i class="fa fa-download"></i></a>
+                    <div>
+                        <p class="title"></p>
                     </div>
-                    <div class="volumeControl">
-                        <div class="wrapper">
-                            <input type="range" class="inner" min="0" max="1" step="0.01" value="@_VolX" @oninput="@((args) => Vol( double.Parse( args.Value.ToString() )))" />
+                    <div class="range">
+                        <input id="dur" type="range" class="range" name="rng" min="0" max="1" step="0.00000001" value="0" onchange="mSet()" style="width: 100%">
+                    </div>
+                    <br>
+                    <div id="start-time" class="time start-time"></div>
+                    <div id="end-time" class="time end-time"></div>
+        
+                    <br>
+                    <div class="ctrl">
+                        <div class="image">
+
+                            @*<button id="play-btn" class="fa fa-play "></button>*@
+                            <button id="play-btn" class="play-btn" @onclick="@(()=> PlayPause()  )"> <i class="fa-solid @_btnPlayStyle"></i> </button>
+
+                                        <a href="./Audio/d26jn_Silencio.mp3" download class="ctrl_btn " title="Descargar" id="next"><i class="fa fa-download"></i></a>
+                        </div>
+                        <div class="volumeControl">
+                            <div class="wrapper">
+                                <input type="range" class="inner" min="0" max="1" step="0.01" value="@_VolX" @oninput="@((args) => Vol( double.Parse( args.Value.ToString() )))" />
 
                             
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div>
+                <div>
+                </div>
             </div>
         </div>
+
+
     </div>
 
+      </section>
 
-</div>
-
-  </section>
-
-        @*<audio controls="controls">
-                <br /><br />
-                
-            <source src="audio\silencio.mp3" type="audio/mpeg" />
-        </audio>*@
-
-    </section>
+</section>
 
         
         <br /><br /><br /><br />
@@ -246,7 +242,7 @@ Pendiente:  crear un array para encapsular los src de los demas audios para asig
 <Footer />
 
 @code {
-
+    
     private WeatherForecast[]? forecasts;
     private bool expand;
 

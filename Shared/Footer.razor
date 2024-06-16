@@ -1,4 +1,48 @@
-﻿<footer class="footer1">
+﻿@using KinderYoga.Data;
+@using UtilesKinder.Models.Data;
+@using UtilesKinder.Models.Constante;
+@using System.Data;
+
+
+
+@*@inject HttpClient Https*@
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JS
+@inject IWebHostEnvironment Environment
+@inject IJSRuntime JS
+@inject IConfiguration Configuration
+@using KinderYoga.Data.Helper;
+
+
+<section id="Form_coment" style="display:none; ">
+
+    <div class="Content_form">
+    <p> Envianos un Comentario</p>
+
+<ul>
+        <li class="form_coment">
+        
+        <input type="text"  placeholder="Ingresa tu Nombre" />
+    </li>
+        <li class="form_coment">
+        
+            <input type="text" placeholder="Ingresa tu Correo" />
+    </li>
+    <li class="form_coment">
+        
+            <input type="text"  placeholder="Introduce tu comentario" />
+    </li>
+    <li>
+
+        <button type="submit" class="btn_coment"> Enviar</button>
+    </li>
+</ul>
+
+</div>
+
+</section>
+
+<footer class="footer1">
      
     <div class="ulposition">
 
@@ -15,7 +59,7 @@
             </li>
             
             <li>
-                <button class="btnform">Envia un comentario </button>
+                <button @*@onclick="Show_Form*@" class="btnform">     Envia un comentario </button>
             </li>
          
 
@@ -49,6 +93,73 @@
 </footer>
 
 @code {
+
+    private List<eComentarios> _ConDat { get; set; } = new();
+    private List<eComentarios> _ConFil { get; set; } = new();
+    // Fechas para filtro de consulta principal
+    private DateTime _FI { get; set; } = DateTime.Now;
+    private DateTime _FF { get; set; } = DateTime.Now;
+
+    #region "Guarda Coment"
+    private async Task conActualizaDB( int com_ID)
+    {
+             var oReq = new eRequest
+            {
+                Tipo = 1,
+                Base = Configuration.GetConnectionString(Const.ID_BASE),
+                Stored = "SP_GD_Comentarios",
+                Parametros = new List<eParametro>
+                {
+
+                    new eParametro {Nombre = "xxx_FI", Valor = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0)},
+                    new eParametro {Nombre = "xxx_FF", Valor = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0)},
+                    new eParametro {Tipo = DbType.Int64, Nombre = "com_ID", Valor = com_ID},
+                    new eParametro {Nombre = "xxx_Version", Valor = 0},
+                    new eParametro {Nombre = "xxx_Status", Valor = 0},
+                    new eParametro {Tipo = DbType.Int64, Nombre = "com_Nombre", Valor = 0},
+                    new eParametro {Tipo = DbType.Int64, Nombre = "com_Correo", Valor = 0},
+                    new eParametro {Tipo = DbType.Int64, Nombre = "com_Texto", Valor = 0},
+                    new eParametro {Nombre = "xxx_Obs", Valor = ""}
+                }
+            };
+
+        //var oRes = await oService.apiServiceGen<eResponse>(Https, oReq);
+
+        //if (!Object.ReferenceEquals(null, oRes) && oRes.Data.Tables.Count > 0)
+        //{
+        //    try
+        //    {
+        //        _ConDat = oRes.Data.Tables[0].AListaDe<eComentarios>();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+
+        //}
+
+        //_ConFil = _ConDat;
+
+        //if (_ConFil.Count == 0)
+        //    _MuestraFechas = true;
+
+        //}
+
+
+        #endregion
+
+    }
+    
+
+
+    //***************Formulario *************************
+
+    //private async Task Show_Form()
+    //{
+    //    await JS.InvokeVoidAsync("Form_Show");
+    //}
+
+
 
 
 }

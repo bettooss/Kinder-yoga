@@ -27,12 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+
 function iniPlay() {
     //let length = player.duration;
     //dur.max = length;
-    
-
+    let titlesong = document.getElementById("titlesong");  
     player.play();
+    titlesong.style.display = "block";
     //initProgressBar();
 }
 function iniStop() {
@@ -168,23 +171,64 @@ window.show_hidden1 = function () {
     }
 };
 
+//windows.Form_Show = function (){
 
+//    var from_coment = document.getElementById("Form_coment");
+//    from_coment.style.display = "flex";
+//    from_coment.style.width = "400px";
+//    from_coment.style.height= "400px";
+    
+
+
+//}
 //window.obtensrc = function (image) {
 
 //    return image.src;
 //}
 
-//window.visorc = function () {
-//    var visor = document.getElementById("visorr");    
-//    visor.style.display = "none";
+window.visorc = function () {
+    var visor = document.getElementById("visorr");    
+    visor.style.display = "none";
     
-//};
+};
 
-//window.openimg = function (src) {
-//    var visor = document.getElementById("images").src = src;    
-//    visor.style.display = "flex";
+window.audio = [
+    "imgopn", "imgopn", "imgopn"
+];
 
+window.ImgMax = function () {
+    var contentimg = document.getElementById("imgx");
+    var sizeimg = document.querySelectorAll(".imgopn");
 
-//};
+    /*contentimg.style.transition = "width 5s ease, height 5s ease";*/
+    contentimg.style.display="inline";  
+    contentimg.classList.toggle('full-size');
+    contentimg.style.justifyContent = "center";
+    contentimg.style.height = "500px";
+    contentimg.style.width = "80%";
+    contentimg.style.margin = "50px 50px";
+    contentimg.style.position = "relative";
+    contentimg.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+    
+    //sizeimg.style.transition = "height 2s";
+    //sizeimg.style.transition = "width 2s";
+    sizeimg.forEach(function (sizeimg){
+        sizeimg.style.height = "150px";
+        sizeimg.style.width = "150px";
+    });
+    
+
+};
+
+window.Imgcls = function () {
+    var contentimg = document.getElementById("imgx");
+    var sizeimg = document.querySelectorAll(".imgopn");
+    contentimg.style.display = "none";
+
+    sizeimg.forEach(function (sizeimg) {
+        sizeimg.style.height = "200px";
+        sizeimg.style.width = "220px";
+    });
+};
 
 

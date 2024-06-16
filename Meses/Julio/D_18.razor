@@ -10,6 +10,10 @@ Pendiente: Insertar audio
 *@
 
 @page "/D_18"
+@using KinderYoga.Data;
+@using KinderYoga.Data.Helper;
+@inject IJSRuntime JS
+
 
 <PageTitle>18-Julio</PageTitle>
 
@@ -75,16 +79,79 @@ Pendiente: Insertar audio
     <br /><br /><br />
     <section>
 
-        <div id="tema" class="radius">
+        <div id="tema" style="margin-left:660px" class="radius">
             <a target="_blank" style="text-decoration:none;  text-align:center; " href="/video/julio/Presentación_clase_7_d13.pdf">Sanación <br /> Musicoterapia Holística.pdf</a>
         </div>
 
     </section>
     <br /><br /><br />
+
+    <section style="margin-right:150px; ">
+        
+        <br />
+
+        <div class="audio-player" style="background: linear-gradient( 70deg, #edaef9,#81b1fa ); margin-right:375px; " id="skin">
+
+            <div class="holder">
+                
+                <p id="titlesong" style="text-align: center; color:#56125B; display: none;">Shanti Mantras</p>
+                <div class="audio-wrapper" id="player-container" href="javascript:;">
+                    <audio id="player" preload="metadata" onloadedmetadata="mDur()" ontimeupdate="initProgressBar()">
+                        <source src="@Constante._src[3]" type="audio/mp3">
+
+                    </audio>
+                </div>
+                <div class="player-controls scrubber">
+                    <div>
+                        <div>
+                            <p class="title"></p>
+                        </div>
+                        <div class="range">
+                            <input id="dur" type="range" class="range" name="rng" min="0" max="1" step="0.00000001" value="0" onchange="mSet()" style="width: 100%">
+                        </div>
+                        <br>
+                        <div id="start-time" class="time start-time"></div>
+                        <div id="end-time" class="time end-time"></div>
+
+                        <br>
+                        <div class="ctrl">
+                            <div class="image">
+
+                                @*<button id="play-btn" class="fa fa-play "></button>*@
+                                <button id="play-btn" class="play-btn" @onclick="@(()=> PlayPause()  )"> <i class="fa-solid @_btnPlayStyle"></i> </button>
+
+                                <a href="./Audio/d4Jl_atencion_los_sonidos.mp3" download class="ctrl_btn " title="Descargar" id="next"><i class="fa fa-download"></i></a>
+                            </div>
+                            <div class="volumeControl">
+                                <div class="wrapper">
+                                    <input type="range" class="inner" min="0" max="1" step="0.01" value="@_VolX" @oninput="@((args) => Vol( double.Parse( args.Value.ToString() )))" />
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+    <br /><br />
+    <section style="display:inline-flex;">
+
+        <audio id="plr" style="margin-left: 578px;" controls src="/Audio/d18Jl_practica_diaria.mp3"></audio>
+        <a style="margin-top:5px;" href="./Audio/d18Jl_practica_diaria.mp3" download class="ctrl_btn " title="Descargar" id="next"><img style="height: 40px; width:40px;" src="/audio/download_blue.png" /></a>
+    </section>
+
+    <br /><br /><br />
     <section>
 
 
-        <video class="radius space sizevideo" style="margin-left:430px;" controls="controls">
+        <video class="radius space sizevideo" style="margin-left:385px;" controls="controls">
             <source src="/video/julio/clase_7_semana_4d13.mp4" type="video/mp4" />
         </video>
 
@@ -95,5 +162,73 @@ Pendiente: Insertar audio
 <Footer />
 
 @code {
+    // esta bandera es para saber si esta en reproducción
+    private bool _EnPlay = false;
+    private string _btnPlayStyle { get; set; } = "fa-play";
+
+
+    private double _Vol { get; set; } = 1;
+    private double _VolX { get; set; } = 1;
+    private string _VolStyle { get; set; } = "width:100%";
+
+    private async Task PlayPause()
+    {
+
+        if (_EnPlay)
+        {
+            await JS.JSStop();
+            _btnPlayStyle = "fa-play";
+        }
+        else
+        {
+            await JS.JSPlay();
+            _btnPlayStyle = "fa-pause";
+        }
+
+        _EnPlay = !_EnPlay;
+        StateHasChanged();
+
+    }
+
+    private async Task Vol(double xVol)
+    {
+        _VolX = xVol;
+        await JS.JSVol50(_VolX);
+    }
+
+    /// <summary>
+    /// Ya no se usa fue prueba
+    /// </summary>
+    /// <param name="Tipo"></param>
+    /// <returns></returns>
+    private async Task Vo50(int Tipo)
+    {
+
+
+        switch (Tipo)
+        {
+            case -1:
+                _Vol = 0;
+                _VolX = 0;
+                break;
+            case 0:
+                _Vol -= .1;
+                break;
+            case 1:
+                _Vol += .1;
+                break;
+        }
+
+        if (_Vol < 0)
+            _Vol = 1;
+
+        if (_Vol > 1)
+            _Vol = 1;
+
+        _VolStyle = $"width:{_Vol * 100}%";
+
+        await JS.JSVol50(_Vol);
+    }
+
 
 }

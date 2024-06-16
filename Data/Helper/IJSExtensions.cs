@@ -1,4 +1,5 @@
 ﻿using Microsoft.JSInterop;
+using System.Threading;
 
 namespace KinderYoga.Data.Helper
 {
@@ -25,8 +26,10 @@ namespace KinderYoga.Data.Helper
 			await js.InvokeVoidAsync("iniStop");
 		}
 
+       
 
-		public async static Task JSVol50(this IJSRuntime js, double Vol)
+
+        public async static Task JSVol50(this IJSRuntime js, double Vol)
 		{
 			await js.InvokeVoidAsync("Vol50", Vol);
 		}
